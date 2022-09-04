@@ -40,7 +40,7 @@ namespace MIDImporter
             }
         }
 
-        private async static Task PerformWindowsUnpack(string band, string inputFile, string outputPath, string outputName)
+        private static Task PerformWindowsUnpack(string band, string inputFile, string outputPath, string outputName)
         {
             var windowsExecutablePath = Path.GetFullPath(Path.Combine(executablePath, windowsExecutable));
 
@@ -66,7 +66,7 @@ namespace MIDImporter
 
             UniLog.Log("MIDI extraction complete!");
 
-            await Task.CompletedTask;
+            return Task.CompletedTask;
         }
 
         private static void PerformMacOSXConvert(string inputFile, string outputPath, int? optionalThreads)

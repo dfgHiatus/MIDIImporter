@@ -70,19 +70,14 @@ namespace MIDImporter
 
             var fullBandPath = Path.Combine(bandPath, config.GetValue(bandName));
             LocalDB localDB = world.Engine.LocalDB;
-            List<string> list = new List<string>();
             foreach (var inputMid in files)
             {
                 var convertedMidName = Path.GetFileNameWithoutExtension(inputMid);
                 await MIDConverter.Convert(fullBandPath, inputMid, convertedMidPath, convertedMidName).ConfigureAwait(false);
-                list.Add(Path.GetFullPath(Path.Combine(convertedMidPath, convertedMidName)));
-            }
-
-            foreach (var convertedFiles in list)
-            {
-                Msg(convertedFiles + ".wav");
+                var final = Path.GetFullPath(Path.Combine(convertedMidPath, convertedMidName + ".wav"));
+                Msg(final);
                 await localDB.ImportLocalAssetAsync(
-                    Path.Combine(convertedFiles + ".wav"),
+                    Path.Combine(final),
                     LocalDB.ImportLocation.Copy).
                     ConfigureAwait(continueOnCapturedContext: false);
             }
