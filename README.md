@@ -11,4 +11,4 @@ A [NeosModLoader](https://github.com/zkxs/NeosModLoader) mod for [Neos VR](https
 - [fluidSynth](https://github.com/FluidSynth/fluidsynth) - Conversion Library, LGPL-2.1 Licensed
 - [SF2](http://www.schristiancollins.com/generaluser.php) - SoundFont Provider, GeneralUser GS v1.471 Licensed
 
-Additionaly SoundFonts can be found [here](https://github.com/FluidSynth/fluidsynth/wiki/SoundFont)
+Additional SoundFonts can be found [here](https://github.com/FluidSynth/fluidsynth/wiki/SoundFont)
