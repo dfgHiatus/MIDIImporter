@@ -16,7 +16,7 @@ namespace MIDImporter
         private static readonly string macOSXCommand;
         private static readonly string unixCommand;
 
-        public async static Task Convert(string band, string inputFile, string outputPath, string outputName)
+        public async static Task Convert(string band, string inputFile, string outputPath, string outputName, bool showDebugWindow)
         {
             var platform = Environment.OSVersion.Platform;
             switch (platform)
@@ -29,7 +29,7 @@ namespace MIDImporter
                 // - case PlatformID.Xbox:
 
                 case PlatformID.Win32NT:
-                    await PerformWindowsUnpack(band, inputFile, outputPath, outputName);
+                    await PerformWindowsUnpack(band, inputFile, outputPath, outputName, showDebugWindow);
                     break;
                 case PlatformID.Unix:
                     throw new PlatformNotSupportedException("Unix support has not been added yet! Scream at dfg if you see this!");
@@ -39,8 +39,7 @@ namespace MIDImporter
                     throw new PlatformNotSupportedException("You've managed to run this on a platform .NET doesn't recognize, how are you playing Neos?");
             }
         }
-
-        private static Task PerformWindowsUnpack(string band, string inputFile, string outputPath, string outputName)
+        private static Task PerformWindowsUnpack(string band, string inputFile, string outputPath, string outputName, bool showDebugWindow)
         {
             var windowsExecutablePath = Path.GetFullPath(Path.Combine(executablePath, windowsExecutable));
 
@@ -59,10 +58,10 @@ namespace MIDImporter
             process.StartInfo.FileName = windowsExecutablePath;
             process.StartInfo.Arguments = formattedWindowsArgs;
             process.StartInfo.UseShellExecute = false;
-            process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            process.StartInfo.CreateNoWindow = !showDebugWindow;
+            process.StartInfo.WindowStyle = showDebugWindow ? ProcessWindowStyle.Normal : ProcessWindowStyle.Hidden;
             process.Start();
-            process.WaitForExit(); // Blocks?
+            process.WaitForExit();
 
             UniLog.Log("MIDI extraction complete!");
 
