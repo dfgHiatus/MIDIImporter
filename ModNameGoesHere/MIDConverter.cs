@@ -58,7 +58,7 @@ namespace MIDImporter
             var process = new Process();
             process.StartInfo.FileName = windowsExecutablePath;
             process.StartInfo.Arguments = formattedWindowsArgs;
-            process.StartInfo.UseShellExecute = true;
+            process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = false;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             process.Start();

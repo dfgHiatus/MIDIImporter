@@ -50,7 +50,7 @@ namespace MIDImporter
                 {
                     __result = ProcessMIDImport(query, world);
                 }
-                return true;
+                return false;
             }
         }
 
@@ -69,17 +69,25 @@ namespace MIDImporter
             }
 
             var fullBandPath = Path.Combine(bandPath, config.GetValue(bandName));
-            LocalDB localDB = world.Engine.LocalDB;
+
             foreach (var inputMid in files)
             {
                 var convertedMidName = Path.GetFileNameWithoutExtension(inputMid);
                 await MIDConverter.Convert(fullBandPath, inputMid, convertedMidPath, convertedMidName).ConfigureAwait(false);
-                var final = Path.GetFullPath(Path.Combine(convertedMidPath, convertedMidName + ".wav"));
-                Msg(final);
-                await localDB.ImportLocalAssetAsync(
-                    Path.Combine(final),
-                    LocalDB.ImportLocation.Copy).
-                    ConfigureAwait(continueOnCapturedContext: false);
+                var wavName = convertedMidName + ".wav";
+                var final = Path.GetFullPath(Path.Combine(convertedMidPath, wavName));
+
+                await default(ToWorld); 
+                var slot = Engine.Current.WorldManager.FocusedWorld.AddSlot(wavName);
+                slot.PositionInFrontOfUser();
+                await default(ToBackground);
+
+                //await localDB.ImportLocalAssetAsync(
+                //    final,
+                //    LocalDB.ImportLocation.Copy).
+                //    ConfigureAwait(continueOnCapturedContext: false);
+
+                await UniversalImporter.Import(final, world, slot.GlobalPosition, floatQ.Identity);
             }
         }
 	}
