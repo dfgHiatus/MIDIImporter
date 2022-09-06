@@ -33,12 +33,12 @@ namespace MIDImporter
         [AutoRegisterConfigKey]
         private static ModConfigurationKey<bool> importAsRawFiles =
             new("importAsRawFiles",
-            "Import binary variants of audio files.",
+            "Import binary variants of audio files",
             () => false);
         [AutoRegisterConfigKey]
         private static ModConfigurationKey<bool> showDebugWindow =
             new("showDebugWindow",
-            "Show debug window during import.",
+            "Show debug window during import",
             () => false);
         [AutoRegisterConfigKey]
         public static ModConfigurationKey<string> bandName = 
