@@ -124,11 +124,6 @@ namespace MIDImporter
                     Error($"Imported MIDI {inputMid} cannot have unicode characters in its file name.");
                     continue;
                 }
-                else if (inputMid.IndexOf(" ") > -1)
-                {
-                    Error($"Imported MIDI {inputMid} cannot have spaces in its file name.");
-                    continue;
-                }
 
                 var extractedPath = Path.Combine(convertedMidPath, fileToHash[inputMid]);
                 Directory.CreateDirectory(extractedPath);

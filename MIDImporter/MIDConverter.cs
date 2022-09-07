@@ -12,7 +12,7 @@ namespace MIDImporter
     {
         private static readonly string executablePath = Path.Combine("nml_mods", "midi_importer");
         private static readonly string windowsExecutable = "fluidsynth.exe";
-        private static readonly string windowsArgs = "-ni {0} {1} --fast-render {2}.wav";
+        private static readonly string windowsArgs = "-ni \"{0}\" \"{1}\" --fast-render \"{2}.wav\"";
         private static readonly string macOSXCommand;
         private static readonly string unixCommand;
 
