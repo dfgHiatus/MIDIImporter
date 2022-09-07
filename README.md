@@ -13,4 +13,10 @@ A [NeosModLoader](https://github.com/zkxs/NeosModLoader) mod for [Neos VR](https
 - [fluidSynth](https://github.com/FluidSynth/fluidsynth) - Conversion Library, LGPL-2.1 Licensed
 - [SF2](http://www.schristiancollins.com/generaluser.php) - SoundFont Provider, GeneralUser GS v1.471 Licensed
 
+## Installing Custom SoundFonts
+Soundfonts allow to change the way MID files are converted into WAV. I have provided one by default, but installing your own is straightforward:
+
+1. Drop your SoundFont `sf2`/`sf3` into `midi_importer/bands` inside `nml_mods`
+2. Use modconfig enter the full name of the SoundFont to use it.
+
 Additional SoundFonts can be found [here](https://github.com/FluidSynth/fluidsynth/wiki/SoundFont)
