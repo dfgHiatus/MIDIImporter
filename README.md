@@ -13,7 +13,7 @@ A [NeosModLoader](https://github.com/zkxs/NeosModLoader) mod for [Neos VR](https
 Soundfonts allow to change the way MID files are converted into WAV. I have provided one by default, but installing your own is straightforward:
 
 1. Drop your SoundFont (`sf2`/`sf3`) into `midi_importer/bands` inside `nml_mods`.
-2. Use modconfig enter the full name of the SoundFont to use it.
+2. Use modconfig to enter the full name of the SoundFont to use it.
 
 Additional SoundFonts can be found [here](https://github.com/FluidSynth/fluidsynth/wiki/SoundFont)
 
