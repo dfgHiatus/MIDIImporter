@@ -1,29 +1,24 @@
-﻿using CodeX;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MIDImporter
+namespace MIDImporter;
+
+internal static class Utils
 {
-    public static class Utils
+    // Credit to delta for this method https://github.com/XDelta/
+    internal static string GenerateMD5(string filepath)
     {
-        // Credit to delta for this method https://github.com/XDelta/
-        public static string GenerateMD5(string filepath)
-        {
-            using var hasher = MD5.Create();
-            using var stream = File.OpenRead(filepath);
-            var hash = hasher.ComputeHash(stream);
-            return BitConverter.ToString(hash).Replace("-", "");
-        }
+        using var hasher = MD5.Create();
+        using var stream = File.OpenRead(filepath);
+        var hash = hasher.ComputeHash(stream);
+        return BitConverter.ToString(hash).Replace("-", "");
+    }
 
-        public static bool ContainsUnicodeCharacter(string input)
-        {
-            const int MaxAnsiCode = 255;
-            return input.Any(c => c > MaxAnsiCode);
-        }
+    internal static bool ContainsUnicodeCharacter(string input)
+    {
+        const int MaxAnsiCode = 255;
+        return input.Any(c => c > MaxAnsiCode);
     }
 }
