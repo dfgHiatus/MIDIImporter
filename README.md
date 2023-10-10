@@ -4,7 +4,7 @@ A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoade
 
 ## Installation
 1. Install [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader).
-1. Place and extract [MIDImporter_v1.0.2.rar](https://github.com/dfgHiatus/MIDIImporter/releases/tag/v1.0.2) into your `rml_mods` folder. This folder should be at `C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods` for a default install. You can create it if it's missing, or if you launch the game once with ResoniteModLoader installed it will create the folder for you.
+1. Place and extract [MIDImporter](https://github.com/dfgHiatus/MIDIImporter/releases/latest) into your `rml_mods` folder. This folder should be at `C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods` for a default install. You can create it if it's missing, or if you launch the game once with ResoniteModLoader installed it will create the folder for you.
 1. Start the game. If you want to verify that the mod is working you can check your Resonite logs, or import a MID file.
 
 (This may appear to do nothing at first, give it a few seconds to convert)
